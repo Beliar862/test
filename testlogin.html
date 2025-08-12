@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: "Times New Roman", sans-serif;
+      background-color: #ADD8E6;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .login-container {
+      background-color: rgb(255, 255, 255);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ADD8E6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #00008B;
+    }
+    
+    .error {
+      color: red;
+      font-size: 14px;
+      min-height: 20px;
+      margin: 5px 0;
+    }
+    
+    a {
+      color: #00008B;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Masukkan Username" required>
+      <input type="password" id="password" placeholder="Masukkan Password" required>
+      <button type="submit">Login</button>
+      <div id="error-message" class="error"></div>
+      <p>Belum punya akun? <a href="#">Daftar akun</a></p>
+    </form>
+  </div>
+  
+  <script>
+    document.getElementById("loginForm").addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      var username = document.getElementById('username').value.trim();
+      var password = document.getElementById('password').value.trim();
+      var errorMessage = document.getElementById('error-message');
+      
+      
+      errorMessage.textContent = '';
+      
+      
+      if (!username || !password) {
+        errorMessage.textContent = 'Silakan isi username dan password!';
+        return;
+      }
+      
+      
+      console.log('Login attempted with:', {username, password});
+      
+      
+      if (username === "admin" && password === "12345") {
+        errorMessage.textContent = '';
+        alert('Login berhasil!');
+        
+      } else {
+        errorMessage.textContent = 'Username atau password salah!';
+      }
+    });
+  </script>
+</body>
+</html>
